@@ -8,6 +8,7 @@
     "dev": "node --watch src/server.js",
     "seed": "node scripts/seed.js",
     "test": "node tests/test-booking-atomicity.js",
+    "postinstall": "prisma generate",
     "build": "prisma generate"
   },
   "dependencies": {
