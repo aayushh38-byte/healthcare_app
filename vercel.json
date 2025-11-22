@@ -1,0 +1,26 @@
+{
+    "version": 2,
+    "buildCommand": "cd frontend && npm install && npm run build",
+    "outputDirectory": "frontend/dist",
+    "installCommand": "npm install --prefix frontend && npm install --prefix backend",
+    "devCommand": "cd frontend && npm run dev",
+    "rewrites": [
+        {
+            "source": "/api/:path*",
+            "destination": "/api/index"
+        },
+        {
+            "source": "/((?!api).*)",
+            "destination": "/index.html"
+        }
+    ],
+    "functions": {
+        "api/**/*.js": {
+            "memory": 1024,
+            "maxDuration": 10
+        }
+    },
+    "env": {
+        "NODE_ENV": "production"
+    }
+}

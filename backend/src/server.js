@@ -32,13 +32,19 @@ fastify.get('/', async (request, reply) => {
   return { status: 'ok', message: 'Healthcare API is running' };
 });
 
-const start = async () => {
-  try {
-    await fastify.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' });
-  } catch (err) {
-    fastify.log.error(err);
-    process.exit(1);
-  }
-};
+// Export the app for serverless
+module.exports = fastify;
 
-start();
+// Only start server if not in serverless environment
+if (require.main === module) {
+  const start = async () => {
+    try {
+      await fastify.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' });
+    } catch (err) {
+      fastify.log.error(err);
+      process.exit(1);
+    }
+  };
+
+  start();
+}
