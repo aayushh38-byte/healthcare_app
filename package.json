@@ -1,0 +1,21 @@
+{
+    "name": "healthcare-app",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Healthcare Appointment Platform - Full Stack Application",
+    "scripts": {
+        "install:backend": "cd backend && npm install",
+        "install:frontend": "cd frontend && npm install",
+        "install:all": "npm run install:backend && npm run install:frontend",
+        "dev:backend": "cd backend && npm run dev",
+        "dev:frontend": "cd frontend && npm run dev",
+        "build:frontend": "cd frontend && npm run build",
+        "prisma:generate": "cd backend && npx prisma generate",
+        "prisma:push": "cd backend && npx prisma db push",
+        "seed": "cd backend && npm run seed"
+    },
+    "workspaces": [
+        "frontend",
+        "backend"
+    ]
+}
